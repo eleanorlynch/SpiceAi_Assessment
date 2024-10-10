@@ -1,0 +1,20 @@
+version: v1beta1
+kind: Spicepod
+name: test_spicepod
+
+datasets:
+  - from: spice.ai/spiceai/quickstart
+    name: qs
+    acceleration:
+      enabled: true
+      refresh_mode: append
+
+models:
+  - from: file://model_path.onnx
+    name: my_model
+    datasets:
+      - qs
+
+secrets:
+  - from: env
+    name: env
